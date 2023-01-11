@@ -1,1 +1,8 @@
-/*# sourceMappingURL=ArticleList.module.css.map */
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 45px;
+  grid-row-gap: 45px;
+  margin-bottom: 63px;
+}/*# sourceMappingURL=ArticleList.module.css.map */

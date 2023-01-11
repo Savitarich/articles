@@ -1,0 +1,43 @@
+.card {
+  width: 400px;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.mainImage {
+  margin-bottom: 25px;
+}
+
+.date {
+  color: #868686;
+}
+.date span {
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.button {
+  color: #363636;
+}
+.button p {
+  margin-bottom: 25px;
+}
+.button span {
+  margin-left: 6px;
+}/*# sourceMappingURL=ArticleItem.module.css.map */
