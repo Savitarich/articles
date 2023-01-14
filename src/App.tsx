@@ -7,7 +7,7 @@ import { Article } from "./pages/Article";
 export default function App() {
     return (
         <div className='App'>
-            <Router>
+            <Router basename='/articles'>
                 <Routes>
                     <Route
                         path='/'
