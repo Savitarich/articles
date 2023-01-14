@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Article.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux/es/exports";
+import axios from "axios";
+import { RootState } from "../../redux/store";
 
 export const Article: React.FC = () => {
     const { row, content, container, articleBox, button, title, description } =
         style;
+
+    const articleId = useSelector((state: RootState) => state.article.id);
+
+    type ArticleInfoTypes = {
+        id: number;
+        title: string;
+        desctiption: string;
+        date: string;
+        image: string;
+    };
+
+    const [articleInfo, setArticleInfo] = useState<ArticleInfoTypes>();
+
+    useEffect(() => {
+        axios
+            .get(
+                `https://63bd66d518bc301c0266259f.mockapi.io/articles?id=${articleId}`
+            )
+            .then((res) => setArticleInfo(res.data[0]));
+    }, []);
+    if (!articleInfo) {
+        return <>Loading...</>;
+    }
     return (
         <div className={row}>
             <div
                 style={{
-                    backgroundImage: "url(img/Articles/01.jpg)",
+                    backgroundImage: `url(${articleInfo.image})`,
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center center",
@@ -19,9 +45,7 @@ export const Article: React.FC = () => {
             <div className={content}>
                 <div className={container}>
                     <div className={articleBox}>
-                        <h2 className={title}>
-                            The 2020 World's Most Valuable Brands
-                        </h2>
+                        <h2 className={title}>{articleInfo.title}</h2>
                         <p className={description}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Interdum ornare convallis non etiam tincidunt

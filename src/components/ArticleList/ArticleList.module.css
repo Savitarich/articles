@@ -5,4 +5,12 @@
   grid-column-gap: 45px;
   grid-row-gap: 45px;
   margin-bottom: 63px;
+}
+
+.responseEmpty {
+  padding-top: 180px;
+}
+.responseEmpty p {
+  font-size: 42px;
+  text-align: center;
 }/*# sourceMappingURL=ArticleList.module.css.map */

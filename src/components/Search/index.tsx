@@ -1,8 +1,22 @@
 import React from "react";
 import style from "./Search.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchValue } from "../../redux/slices/searchSlice";
+import { RootState } from "../../redux/store";
 
 export const Search: React.FC = () => {
     const { row, title, search, inputText, results } = style;
+
+    const dispatch = useDispatch();
+
+    const countArticles = useSelector(
+        (state: RootState) => state.article.countArticles
+    );
+
+    const onChangeInput = (event: any) => {
+        dispatch(setSearchValue(event.target.value));
+    };
+
     return (
         <>
             <div className={row}>
@@ -12,6 +26,7 @@ export const Search: React.FC = () => {
                         type='text'
                         className={inputText}
                         placeholder='search'
+                        onChange={(event) => onChangeInput(event)}
                     />
                     <img
                         src='img/Search/search-icon.svg'
@@ -19,7 +34,7 @@ export const Search: React.FC = () => {
                     />
                 </div>
                 <div className={results}>
-                    <p>Results: 6</p>
+                    <p>Results: {countArticles}</p>
                     <hr />
                 </div>
             </div>

@@ -1,42 +1,100 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import style from "./ArticleItem.module.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setId } from "../../redux/slices/articleSlice";
+import { RootState } from "../../redux/store";
 
-export const ArticleItem: React.FC = () => {
-    const { card, mainImage, date, title, container, description, button } =
-        style;
+type ArticleItemProps = {
+    id: number;
+    title: string;
+    desctiption: string;
+    date: string;
+    image: string;
+};
+
+export const ArticleItem: React.FC<ArticleItemProps> = ({
+    id,
+    title,
+    desctiption,
+    date,
+    image,
+}) => {
+    const {
+        card,
+        mainImage,
+        dateStyle,
+        titleStyle,
+        container,
+        description,
+        button,
+    } = style;
+
+    const titleRef = useRef<HTMLHeadingElement>(document.createElement("h3"));
+    const desriptionRef = useRef<HTMLSpanElement>(
+        document.createElement("span")
+    );
+    const dispatch = useDispatch();
+
+    const searchValue = useSelector(
+        (state: RootState) => state.search.searchValue
+    );
+
+    const openArticlePage = () => {
+        dispatch(setId(id));
+    };
+
+    useEffect(() => {
+        const searchValueArr: string[] = searchValue.split(" ");
+        const titleArr: string[] = title.split(" ");
+        const desctiptionArr: string[] = desctiption.split(" ");
+        searchValueArr.forEach((elem) => {
+            if (elem !== "") {
+                titleArr.forEach((item, index) => {
+                    if (elem === item) {
+                        titleArr.splice(index, 1, `<mark>${item}</mark>`);
+                    }
+                });
+                desctiptionArr.forEach((item, index) => {
+                    if (elem === item) {
+                        desctiptionArr.splice(index, 1, `<mark>${item}</mark>`);
+                    }
+                });
+            }
+        });
+        titleRef.current.innerHTML = titleArr.join(" ");
+        desriptionRef.current.innerHTML = desctiptionArr.join(" ");
+    }, [searchValue]);
     return (
         <>
             <div className={card}>
                 <img
                     className={mainImage}
-                    src='img/Articles/01.jpg'
-                    alt='img/Articles/01.jpg'
+                    src={image}
+                    alt={image}
                 />
                 <div className={container}>
-                    <p className={date}>
+                    <p className={dateStyle}>
                         <span>
                             <img
                                 src='img/Articles/date-icon.svg'
                                 alt='date-icon'
                             />
                         </span>
-                        June 29th, 2021
+                        {date}
                     </p>
-                    <h3 className={title}>
-                        The 2020 World's Most Valuable Brands
-                    </h3>
+                    <h3
+                        className={titleStyle}
+                        ref={titleRef}
+                    ></h3>
                     <p className={description}>
-                        <span>
-                            Non sed molestie tortor massa vitae in mattis. Eget
-                            vel consequat hendrerit commodo libero aliquam. Urna
-                            arcu nunc tortor vitae pharetra
-                        </span>
+                        <span ref={desriptionRef}></span>
                         ...
                     </p>
                     <Link
                         to='/article'
                         className={button}
+                        onClick={() => openArticlePage()}
                     >
                         <p>
                             Read more

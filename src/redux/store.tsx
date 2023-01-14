@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import filtersSlice from "./slices/filtersSlice";
+import searchSlice from "./slices/searchSlice";
+import articleSlice from "./slices/articleSlice";
 
 export const store = configureStore({
     reducer: {
-        filter: filtersSlice,
+        search: searchSlice,
+        article: articleSlice,
     },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
