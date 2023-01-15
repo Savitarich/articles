@@ -39,4 +39,38 @@
 }
 .button span {
   margin-right: 6px;
+}
+
+@media (max-width: 1291px) {
+  .container {
+    width: 900px;
+  }
+}
+@media (max-width: 901px) {
+  .container {
+    width: 600px;
+  }
+}
+@media (max-width: 601px) {
+  .container {
+    width: 420px;
+  }
+  .articleBox {
+    padding: 20px 20px 30px 20px;
+    margin-bottom: 35px;
+  }
+  .title {
+    margin-bottom: 15px;
+  }
+  .description {
+    font-size: 14px;
+  }
+}
+@media (max-width: 421px) {
+  .container {
+    width: 310px;
+  }
+  .title {
+    font-size: 21px;
+  }
 }/*# sourceMappingURL=Article.module.css.map */

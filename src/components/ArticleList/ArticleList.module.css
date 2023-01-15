@@ -13,4 +13,16 @@
 .responseEmpty p {
   font-size: 42px;
   text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 721px) {
+  .row {
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 20px;
+  }
 }/*# sourceMappingURL=ArticleList.module.css.map */

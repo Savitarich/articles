@@ -34,3 +34,14 @@
         border: 0.5px solid #EAEAEA;
     }
 }
+@media (max-width: 721px){
+    .row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .inputText{
+        width: 300px;
+        padding: 15px 20px 15px 50px;
+    }
+}

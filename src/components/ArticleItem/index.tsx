@@ -91,22 +91,22 @@ export const ArticleItem: React.FC<ArticleItemProps> = ({
                         <span ref={desriptionRef}></span>
                         ...
                     </p>
-                    <Link
-                        to='/article'
-                        className={button}
-                        onClick={() => openArticlePage()}
-                    >
-                        <p>
-                            Read more
-                            <span>
-                                <img
-                                    src='img/Articles/arrow.svg'
-                                    alt='arrow'
-                                />
-                            </span>
-                        </p>
-                    </Link>
                 </div>
+                <Link
+                    to='/article'
+                    className={button}
+                    onClick={() => openArticlePage()}
+                >
+                    <p>
+                        Read more
+                        <span>
+                            <img
+                                src='img/Articles/arrow.svg'
+                                alt='arrow'
+                            />
+                        </span>
+                    </p>
+                </Link>
             </div>
         </>
     );
