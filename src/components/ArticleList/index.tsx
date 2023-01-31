@@ -29,7 +29,7 @@ export const ArticleList: React.FC = () => {
 
     useEffect(() => {
         axios
-            .get("https://63bd66d518bc301c0266259f.mockapi.io/articles")
+            .get("https://6393666511ed187986b4cb75.mockapi.io/articles")
             .then((res) => setAllArticles(res.data));
     }, []);
 
